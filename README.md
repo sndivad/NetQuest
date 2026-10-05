@@ -222,3 +222,5 @@ Definidos en `src/test/resources/features/login.feature`:
 Ambos comparten un `Background` que abre la web, despliega el menú y muestra el formulario de login.
 
 ---
+
+![Mi imagen desde Imgur](https://i.imgur.com/5IBeNir.jpeg)
