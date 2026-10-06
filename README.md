@@ -204,7 +204,7 @@ También pueden lanzarse desde IntelliJ IDEA ejecutando `TestRunner` (inviertien
         loginPage.typePassword(System.getProperty("user.password"));
     }
 
-
+![Mi imagen desde Imgur](https://i.imgur.com/raHNiOp.jpeg)
 ---
 
 ## Reportes y Capturas de Pantalla
@@ -218,6 +218,8 @@ target/cucumber-report.html
 Ábrelo con cualquier navegador para ver el detalle de cada escenario y step.
 
 **Captura en fallo:** cuando un escenario falla, el hook `@After` adjunta automáticamente una captura de pantalla al reporte. La captura se obtiene cambiando temporalmente al contexto `NATIVE_APP`, ya que en una sesión web de Chrome el screenshot a través de chromedriver puede devolver `null`.
+
+![Mi imagen desde Imgur](https://i.imgur.com/esGud9L.jpeg)
 
 ---
 
@@ -233,5 +235,3 @@ Definidos en `src/test/resources/features/login.feature`:
 Ambos comparten un `Background` que abre la web, despliega el menú y muestra el formulario de login.
 
 ---
-
-![Mi imagen desde Imgur](https://i.imgur.com/raHNiOp.jpeg)
