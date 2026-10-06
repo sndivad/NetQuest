@@ -186,13 +186,6 @@ mvn clean test -Dplatform=android -Dandroid.udid=emulator-5554 -Duser.email=... 
 
 También pueden lanzarse desde IntelliJ IDEA ejecutando `TestRunner` (añade las propiedades en *VM options*: `-Duser.email=... -Duser.password=...`).
 
-### Filtrar escenarios por tag
-
-Si los escenarios tienen tags (por ejemplo `@smoke` o `@login`):
-
-```bash
-mvn clean test -Dcucumber.filter.tags="@smoke" -Duser.email=... -Duser.password=...
-```
 
 ---
 
