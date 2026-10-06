@@ -1,7 +1,9 @@
 package org.sndivad.selenium.pages;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -21,8 +23,10 @@ public class HomePage {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @FindBy(xpath = "//div[@data-testid='nav-bar-profile-item']")
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.Image\").instance(0)")
+    @iOSXCUITFindBy(accessibility = "TODO_login_entry")
     private WebElement profileButton;
+
 
 
     public boolean isHomeDisplayed() {

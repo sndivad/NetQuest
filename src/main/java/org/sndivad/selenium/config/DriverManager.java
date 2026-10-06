@@ -30,13 +30,15 @@ public class DriverManager {
                         UiAutomator2Options androidOptions = new UiAutomator2Options();
 
                         androidOptions.setUdid(PropertyReader.get("android.udid"));
-                        androidOptions.setNoReset(true);
+                        androidOptions.setAppPackage(PropertyReader.get("android.appPackage"));
+                        androidOptions.setAppActivity(PropertyReader.get("android.appActivity"));
+                        androidOptions.setAutoGrantPermissions(true);
+                        androidOptions.setNoReset(false);
                         androidOptions.setNewCommandTimeout(Duration.ofSeconds(120));
-                        androidOptions.setCapability("browserName", "Chrome");
-                        androidOptions.setChromeOptions(Map.of("args", List.of(
-                                "--no-first-run",
-                                "--disable-fre",
-                                "--no-default-browser-check")));
+
+
+                        //androidOptions.setCapability("browserName", "Chrome");
+                        //androidOptions.setChromeOptions(Map.of("args", List.of("--no-first-run","--disable-fre","--no-default-browser-check")));
                         driver = new AndroidDriver(appiumUrl, androidOptions);
                     }
                     case "ios" -> {
@@ -44,11 +46,6 @@ public class DriverManager {
 
                         options.setDeviceName("iPhone 15 Plus");
                         options.setApp("//Users//davidnavarro//Library//Developer//Xcode//DerivedData//Runner-datsrpryvgrnprchkjgjkqnxrlzb//Build//Products//Debug-iphonesimulator//Runner.app");
-                        /*
-                        ejemplo de donde esta el runner.app para instalar al app desde 0 o usar
-                        "appium:appPackage": "com.netquest.pokey",
-                        "appium:appActivity": "com.netquest.pokey.debug.MainActivity"
-                         */
                         options.setPlatformVersion("17.5");
                         options.setPlatformName("iOS");
                         options.setAutomationName("XCUITest");

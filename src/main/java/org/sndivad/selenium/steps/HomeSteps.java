@@ -1,5 +1,6 @@
 package org.sndivad.selenium.steps;
 
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.sndivad.selenium.config.DriverManager;
 import org.sndivad.selenium.pages.HomePage;
@@ -19,11 +20,11 @@ public class HomeSteps {
         loginPage = new LoginPage(DriverManager.getDriver());
     }
 
-    @When("the home page should be displayed")
-    public void the_home_page_should_be_displayed() {
-        //homePage.isHomeDisplayed();
-        Assert.assertTrue(homePage.isHomeDisplayed(), "Home not displayed");
+    @Then("the user should be redirected to the home screen")
+    public void the_user_should_be_redirected_to_the_home_screen() {
+        Assert.assertTrue(homePage.isHomeDisplayed(), "Home is not displayed");
     }
+
 
 
 }

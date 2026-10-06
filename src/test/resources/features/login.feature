@@ -1,19 +1,19 @@
 Feature: Application Login
 
   Background:
-    Given The User is on the login page
-    When the user press the burger button
-    And the user press log in button
-    Then The form login is displayed
+    Given the app is launched
+    And the user skips the splash screen
+    And the user selects "Ya tengo una cuenta"
+    And the form login is displayed
 
-  Scenario: Login with a valid email and password
+  Scenario: Login successfully with valid credentials
     When the user enters a valid email
-    And  the user enters a valid password
-    And the user tap log in button
-    Then the home page should be displayed
+    And the user enters a valid password
+    And the user taps on "Iniciar sesión"
+    Then the user should be redirected to the home screen
 
-  Scenario: Login with an invalid password
+  Scenario: Login fails with an incorrect password
     When the user enters a valid email
-    And  the user enters an invalid password "Davi444dd@"
-    And the user tap log in button
-    Then invalid password or user should be displayed
+    And the user enters an incorrect password "Dafds123"
+    And the user taps on "Iniciar sesión"
+    Then the user should see an incorrect password error message

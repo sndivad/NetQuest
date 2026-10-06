@@ -1,5 +1,7 @@
 package org.sndivad.selenium.steps;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -7,10 +9,12 @@ import io.cucumber.java.en.When;
 import org.sndivad.selenium.config.DriverManager;
 import org.sndivad.selenium.pages.HomePage;
 import org.sndivad.selenium.pages.LoginPage;
+import org.sndivad.selenium.utils.PropertyReader;
 import org.testng.Assert;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+
 
 public class LoginSteps {
 
@@ -22,53 +26,53 @@ public class LoginSteps {
         homePage = new HomePage(DriverManager.getDriver());
     }
 
-    @Given("The User is on the login page")
-    public void the_user_is_on_the_login_page() {
-        loginPage.open();
-        System.out.println("Abrimos la pagina: " + loginPage.getTitle());
+
+    @Given("the app is launched")
+    public void the_app_is_launched() {
+        System.out.println("App lanzada");
+        AppiumDriver driver = DriverManager.getDriver();
+        Assert.assertEquals(((AndroidDriver) driver).getCurrentPackage(), PropertyReader.get("android.appPackage"));
+    }
+    @And("the user skips the splash screen")
+    public void the_user_skips_the_splash_screen() {
+        loginPage.tapSkipButton();
+    }
+    @And("the user selects \"Ya tengo una cuenta\"")
+    public void the_user_selects_Ya_tengo_una_cuenta() {
+        loginPage.tapAlreadyHaveAccountButton();
     }
 
-    @When("the user press the burger button")
-    public void the_user_press_the_burger_button() {
-        loginPage.tapBurgerButton();
-        System.out.println("Hacemos click en burger button");
-    }
-
-    @And("the user press log in button")
-    public void the_user_press_log_in_button() {
-        loginPage.tapLoginButton();
-        System.out.println("Hacemos click en login button");
-    }
-    @Then("The form login is displayed")
+    @And("the form login is displayed")
     public void the_form_login_is_displayed() {
-        //loginPage.isLoginFormDisplayed();
-        Assert.assertTrue(loginPage.isLoginFormDisplayed(), "Login panel is not displayed");
+        Assert.assertTrue(loginPage.isLoginFormDisplayed());
     }
+
     @When("the user enters a valid email")
     public void the_user_enters_a_valid_email() {
-        loginPage.typeEmail("sndivad@gmail.com");
-        //loginPage.typeEmail(System.getProperty("user.email"));
-        System.out.println("Introducimos el usuario");
+        //loginPage.typeEmail("tuemail");
+        loginPage.typeEmail(System.getProperty("user.email"));
     }
     @When("the user enters a valid password")
     public void the_user_enters_a_valid_password() {
-        loginPage.typePassword("David@123");
-        //loginPage.typePassword(System.getProperty("user.password"));
-        System.out.println("Introducimos la contraseña");
-    }
-    @When("the user tap log in button")
-    public void the_user_tap_log_in_button() {
-        loginPage.submit();
+        //loginPage.typePassword("tupassword");
+        loginPage.typePassword(System.getProperty("user.password"));
     }
 
-    @When("the user enters an invalid password {string}")
-    public void the_user_enters_an_invalid_password(String invalidPass) {
-        loginPage.typePassword(invalidPass);
+    @When("the user taps on \"Iniciar sesión\"")
+    public void the_user_taps_on_Iniciar_sesión() {
+        loginPage.tapLoginButton();
     }
-    @When("invalid password or user should be displayed")
-    public void invalid_password_or_user_should_be_displayed() {
-        //loginPage.isErrorDisplayed();
-        Assert.assertTrue(loginPage.isErrorDisplayed(), "Error login is not displayed");
+
+    @When("the user enters an incorrect password {string}")
+    public void the_user_enters_an_incorrect_password(String pass) {
+        loginPage.typePassword(pass);
     }
+    @Then("the user should see an incorrect password error message")
+    public void the_user_should_see_an_incorrect_password_error_message() {
+        Assert.assertTrue(loginPage.isErrorDisplayed());
+
+    }
+
+
 
 }
