@@ -49,12 +49,12 @@ public class LoginSteps {
 
     @When("the user enters a valid email")
     public void the_user_enters_a_valid_email() {
-        //loginPage.typeEmail("tuemail");
+        //loginPage.typeEmail("añadeaquituemail");
         loginPage.typeEmail(System.getProperty("user.email"));
     }
     @When("the user enters a valid password")
     public void the_user_enters_a_valid_password() {
-        //loginPage.typePassword("tupassword");
+        //loginPage.typePassword("añadeaquitupassword");
         loginPage.typePassword(System.getProperty("user.password"));
     }
 

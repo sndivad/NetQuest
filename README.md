@@ -184,7 +184,25 @@ Para indicar plataforma o dispositivo explícitamente:
 mvn clean test -Dplatform=android -Dandroid.udid=emulator-5554 -Duser.email=... -Duser.password=...
 ```
 
-También pueden lanzarse desde IntelliJ IDEA ejecutando `TestRunner` (añade las propiedades en *VM options*: `-Duser.email=... -Duser.password=...`).
+Yo ejecuto este comando:
+
+```bash
+mvn test -Dplatform=android -Duser.email=tucorreo@gmail.com -Duser.password=tupassword
+```
+-Dplatform=android -> simulando que le pasas android/ios por un selector de Jenkins por ejemplo
+
+También pueden lanzarse desde IntelliJ IDEA ejecutando `TestRunner` (inviertiendo el estado comentado del contenido de los metodos de la linea 50 y 55 de la clase LoginSteps.java).
+
+    @When("the user enters a valid email")
+    public void the_user_enters_a_valid_email() {
+        //loginPage.typeEmail("añadeaquituemail");
+        loginPage.typeEmail(System.getProperty("user.email"));
+    }
+    @When("the user enters a valid password")
+    public void the_user_enters_a_valid_password() {
+        //loginPage.typePassword("añadeaquitupassword");
+        loginPage.typePassword(System.getProperty("user.password"));
+    }
 
 
 ---
