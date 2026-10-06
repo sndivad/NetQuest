@@ -234,4 +234,4 @@ Ambos comparten un `Background` que abre la web, despliega el menú y muestra el
 
 ---
 
-![Mi imagen desde Imgur](https://i.imgur.com/5IBeNir.jpeg)
+![Mi imagen desde Imgur](https://i.imgur.com/raHNiOp.jpeg)
